@@ -3,10 +3,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+
 # C extensions
 *.so
 *.pkl
 .env
+artifact
 
 # Distribution / packaging
 .Python
