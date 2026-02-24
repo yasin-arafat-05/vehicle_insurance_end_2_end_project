@@ -31,3 +31,34 @@ src   0.0.1  /home/yasin/all_program/vehicle_insurance_end_2_end_project
 - 7. add code to training pipeline 
 - 8. run demo.py (set mongodb connection url first, see next step)
 
+
+
+### 7. Data Validation, Data Transformation & Model Trainer:
+
+- 1. Complete the work on utils.main_utils.py and config.schema.yaml file `(add entire info about dataset for data validation step)`
+- 2. Now work on the "Data Validation" component the way we did in step 17 for Data Ingestion. (Workflow mentioned below)
+- 3. Now work on the "Data Transformation" component the way we did in above step. (add estimator.py to entity folder)
+- 4. Now work on the "Model Trainer" component the way we did in above step. (add class to estimator.py in entity folder)
+
+- 5. Before moving to next component of Model Evaluation, some AWS services setup is needed:
+      * Login to AWS console.
+      * Keep region set as - us-east-1
+      * Go to IAM >> Create new user (name: firstproj)
+      * Attach policy >> select AdministratorAccess >> next >> create user
+      * Go to the user >> Security Credentials >> Access Keys >> Create access key
+      * Select CLI >> agree to condition >> next >> Create Access Key >> download csv file
+      * Set env variables with above csv values using below method:
+      * Now add the access key, secret key, region name to constants.__init__.py
+      * Add code to src.configuration.aws_connection.py file (To work with AWS S3 service)
+      * Ensure below info in constants.__init__.py file:
+            MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
+            MODEL_BUCKET_NAME = "my-model-mlopsproj"
+            MODEL_PUSHER_S3_KEY = "model-registry"
+      * Go to S3 service >> Create bucket >> Region: us-east-1 >> General purpose >>
+        Bucket Name: "my-model-mlopsproj" >> uncheck: "Block all public access" and acknowledge >>
+        Hit Create Bucket
+      * Now inside "src.aws_storage" code needs to be added for the configurations needed to pull 
+        and push model from AWS S3 bucket. 
+      * Inside "entity" dir we will have an "s3_estimator.py" file containing all the func to pull/push
+        data from s3 bucket.
+        
