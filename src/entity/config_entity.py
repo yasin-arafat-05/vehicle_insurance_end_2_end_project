@@ -79,4 +79,10 @@ class ModelPusherConfig:
     bucket_name: str = CONFIG.MODEL_BUCKET_NAME
     s3_model_key_path: str = CONFIG.MODEL_FILE_NAME
     
+
+# ========8. Model Prediction Data Holder =========
+@dataclass
+class VehiclePredictorConfig:
+    model_file_path: str = CONFIG.MODEL_FILE_NAME
+    model_bucket_name: str = CONFIG.MODEL_BUCKET_NAME
     
