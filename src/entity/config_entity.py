@@ -64,3 +64,19 @@ class ModelTrainerConfig:
     _rf_n_estimator : int = CONFIG.MODEL_RF_N_ESTIMATOR
     _rf_min_samples_split : int = CONFIG.MODEL_RF_MIN_SAMPLES_SPLIT
     
+    
+
+# ========6. Model Evaluation Data Holder =========
+@dataclass
+class ModelEvaluationConfig:
+    changed_threshold_score: float = CONFIG.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+    bucket_name: str = CONFIG.MODEL_BUCKET_NAME
+    s3_model_key_path: str = CONFIG.MODEL_FILE_NAME
+
+# ========7. Model Pusher Data Holder =========
+@dataclass
+class ModelPusherConfig:
+    bucket_name: str = CONFIG.MODEL_BUCKET_NAME
+    s3_model_key_path: str = CONFIG.MODEL_FILE_NAME
+    
+    

@@ -80,10 +80,15 @@ class Settings(BaseSettings):
     MODEL_RF_N_ESTIMATOR: int 
     MODEL_RF_MIN_SAMPLES_SPLIT: int 
 
-    # ===============================
+    # ==================================================================
     # Model Evaluation
-    # ===============================
+    # when we train a new model, we will 
+    # compare our old and new model
+    # if accuracy difference > MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+    # then we will push the new model into s3 bucket.
+    # ==================================================================
     MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float
+
 
     # ===============================
     # App Config

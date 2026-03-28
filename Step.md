@@ -43,22 +43,25 @@ src   0.0.1  /home/yasin/all_program/vehicle_insurance_end_2_end_project
 - 5. Before moving to next component of Model Evaluation, some AWS services setup is needed:
       * Login to AWS console.
       * Keep region set as - us-east-1
-      * Go to IAM >> Create new user (name: firstproj)
+      * Go to IAM >> Create new user (name: vhicle_insurance_proj)
       * Attach policy >> select AdministratorAccess >> next >> create user
       * Go to the user >> Security Credentials >> Access Keys >> Create access key
       * Select CLI >> agree to condition >> next >> Create Access Key >> download csv file
       * Set env variables with above csv values using below method:
+        AWS_ACCESS_KEY_ID: SecretStr
+        AWS_SECRET_ACCESS_KEY: SecretStr
       * Now add the access key, secret key, region name to constants.__init__.py
       * Add code to src.configuration.aws_connection.py file (To work with AWS S3 service)
       * Ensure below info in constants.__init__.py file:
             MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
-            MODEL_BUCKET_NAME = "my-model-mlopsproj"
+            MODEL_BUCKET_NAME = "vehicle-insu-proj"
             MODEL_PUSHER_S3_KEY = "model-registry"
       * Go to S3 service >> Create bucket >> Region: us-east-1 >> General purpose >>
-        Bucket Name: "my-model-mlopsproj" >> uncheck: "Block all public access" and acknowledge >>
+        Bucket Name: "vehicle-insu-proj" >> uncheck: "Block all public access" and acknowledge >>
         Hit Create Bucket
       * Now inside "src.aws_storage" code needs to be added for the configurations needed to pull 
         and push model from AWS S3 bucket. 
       * Inside "entity" dir we will have an "s3_estimator.py" file containing all the func to pull/push
         data from s3 bucket.
-        
+  Now, we are ready to work with "Model Evaluation" and "Model Pusher" component.
+
